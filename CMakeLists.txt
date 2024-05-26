@@ -8,4 +8,4 @@ cmake_minimum_required(VERSION 3.15)
 project(Genetic-algorithm CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp src/QAP.hpp)
