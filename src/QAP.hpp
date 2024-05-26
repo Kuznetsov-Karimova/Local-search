@@ -169,13 +169,13 @@ class IteratedLocalSearch {
 public:
     IteratedLocalSearch(int n, Matrix& distance_matrix, Matrix& flow_matrix, int max_iterations, int k) :
         qap(n, distance_matrix, flow_matrix), max_iterations(max_iterations), k(k), gen(std::random_device{}()) {
+        qap.local_search_first_improvement();
         s0 = qap.get_best_solution();
         s = s0;
         best_score = qap.get_best_score();
     }
 
     void run() {
-        s = local_search(s0);
         int iteration = 0;
 
         while (iteration < max_iterations) {
@@ -216,7 +216,7 @@ private:
                 std::swap(idx1, idx2);
             }
 
-            std::reverse(perturbed_solution.begin() + idx1, perturbed_solution.begin() + idx2 + 1);
+            std::reverse(perturbed_solution.begin() + idx1, perturbed_solution.begin() + idx2);
         }
 
         return perturbed_solution;

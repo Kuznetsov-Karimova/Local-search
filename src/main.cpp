@@ -78,7 +78,7 @@ void local_search_first_improvement_run() {
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = end - start;
 
-        std::string res_file = "./results/local_search_first_improvement" + res_files[i];
+        std::string res_file = "./results/local_search_first_improvement/" + res_files[i];
         write_res_file(res_file, qap.get_best_solution());
 
         std::cout << "Best solution: ";
@@ -100,7 +100,7 @@ void iterated_local_search_run() {
 
         read_info(files[i], n, distance_matrix, flow_matrix);
 
-        IteratedLocalSearch alg(n, distance_matrix, flow_matrix, 1000, 2);
+        IteratedLocalSearch alg(n, distance_matrix, flow_matrix, 100000, 2);
 
         auto start = std::chrono::high_resolution_clock::now();
 
@@ -109,7 +109,7 @@ void iterated_local_search_run() {
 
         std::chrono::duration<double> elapsed = end - start;
 
-        std::string res_file = "./results/iterated_local_search" + res_files[i];
+        std::string res_file = "./results/iterated_local_search/" + res_files[i];
         write_res_file(res_file, alg.get_best_solution());
 
         std::cout << "Best solution: ";
